@@ -1,3 +1,41 @@
+# Villarreal Shell
+
+Shell temática escrita en Bash para practicar funciones, argumentos, archivos, procesos y entrada interactiva. Código en `villarreal_shell.sh`; sin gestor de paquetes, base de datos ni servicio backend.
+
+## Requisitos y ejecución
+
+Bash con utilidades Unix (`date`, `mkdir`, `touch`, `rm`, `kill`, `sleep`). `lynx` es opcional para `web`; `mpv` y un MP3 obtenido legítimamente son opcionales para `himno`. No necesitas esos programas para consultar ayuda.
+
+En Bash, desde la raíz:
+
+```sh
+bash -n villarreal_shell.sh
+bash villarreal_shell.sh help
+bash villarreal_shell.sh
+```
+
+El primer comando solo comprueba sintaxis. El segundo muestra ayuda y sale; el último abre el bucle interactivo. Los ejemplos originales con `./` requieren permiso de ejecución en sistemas Unix. En Windows usa un entorno Bash compatible, no PowerShell como intérprete del script.
+
+## Comportamientos que conviene conocer
+
+- `install` crea un archivo y los directorios padre necesarios; su nombre no significa instalar paquetes.
+- `uninstall` puede borrar directorios recursivamente. `kick_aficionado` envía SIGKILL al PID indicado y no comprueba que sea hijo propio.
+- Los comandos desconocidos se pasan a `bash -c`: no es un entorno de comandos restringido ni un aislamiento seguro.
+- `create_aficionado` deja un bucle hijo en segundo plano; no se ve limpieza explícita de hijos al salir.
+- Pistas y datos deportivos son contenido del ejercicio, no información actual contrastada.
+
+No pruebes borrados sobre carpetas personales ni envíes señales a procesos ajenos. Estas son propiedades observadas del código, no cambios introducidos por la documentación.
+
+## Estado y próximos pasos
+
+Revisión del 2026-11-19 sobre `ca51281a419e1bea003dd64004dbc2b5cfdd4499`. Las observaciones del código se distinguen de las pruebas ejecutadas y de los informes históricos. Esta revisión solo modifica documentación.
+
+`bash -n villarreal_shell.sh` aprobó. No se ejecutaron comandos del script, procesos hijos, borrados, reproductor ni acceso web; no hay suite automatizada. Próximos pasos propuestos: probar ayuda/fecha en una sesión controlada, después diseñar limpieza y validación de PIDs/rutas antes de ampliar su uso. No atribuir a la revisión sintáctica una validación funcional.
+
+[Instrucciones para agentes](AGENTS.md).
+
+## Referencia original de comandos
+
 Comandos disponibles en la Villarreal Shell
 install <ruta>
 Crea un archivo o carpeta en la ruta indicada.
@@ -46,4 +84,3 @@ Ejemplo: ./villarreal_shell.sh help
 exit
 Sale de la shell interactiva.
 Ejemplo: ./villarreal_shell.sh exit
-
